@@ -1,0 +1,5 @@
+Env: DiffusionTools
+conda create -n ToolKit-Q python=3.8
+# torch 2.4.0 + cu121
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install matplotlib
