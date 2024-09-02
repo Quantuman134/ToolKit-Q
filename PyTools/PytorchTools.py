@@ -14,11 +14,11 @@ def torch_device_config(index:int=0) -> torch.device:
 
 # Import and Export images to tensors
 # the tensor size is [N, D, W, H], the range of value is within [0, 1]
-def import_image_tensor(img_dir, size=None, device='cpu'):
+def import_image_tensor(img_dir, size=None, dtype:torch.dtype=torch.float32, device='cpu'):
     img = Image.open(img_dir)
     if size is not None:
-        img.resize(size)
-    img_tensor = transforms.ToTensor()(img)
+        img = img.resize(size)
+    img_tensor = transforms.ToTensor()(img).type(dtype)
     img_tensor = img_tensor.unsqueeze(0).to(device)
 
     return img_tensor
